@@ -251,7 +251,7 @@ public class WSDL2JavaMojo
     /**
      * Emits separate Helper classes for meta data.
      *
-     * @parameter expression="false"
+     * @parameter default-value="false"
      */
     private boolean helperGen;
 

@@ -46,13 +46,13 @@ public class Java2WSDLMojo
 {
     /**
      * The directory the compile objects will be located for java2wsdl to source from.
-     * @parameter expression="${project.build.outputDirectory}"
+     * @parameter default-value="${project.build.outputDirectory}"
      */
     private File classesDirectory;
 
     /**
      * Directory for generated content.
-     * @parameter expression="${project.build.directory}/generated-sources/axistools/java2wsdl"
+     * @parameter default-value="${project.build.directory}/generated-sources/axistools/java2wsdl"
      */
     private File outputDirectory;
 
