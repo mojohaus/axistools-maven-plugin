@@ -280,13 +280,19 @@ public class DefaultWSDL2JavaPlugin
         }
         else
         {
-            for ( Iterator i = wsdlSet.iterator(); i.hasNext(); )
+            // MAXISTOOLS-47: It is important to search this way to be able to
+            // respect the order of the WSDL files as specified in the POM, even
+            // though it might be a bit slower (searching all files instead of
+            // only the stale files)
+            for ( Iterator i = wsdlFiles.iterator(); i.hasNext(); )
             {
-                File wsdl = (File) i.next();
+                String wsdlFileName = (String) i.next();
+                File wsdl = getFile( wsdlSet, wsdlFileName );
 
-                if ( wsdlFiles != null && !wsdlFiles.contains( wsdl.getName() ) )
+                // If this file is not among the stale files, skip it 
+                if ( wsdl == null )
                 {
-                    getLog().info( "Skipping wsdl: " + wsdl.toString() + " as not listed." );
+                    getLog().info( "Skipping up to date wsdl: " + wsdlFileName + "." );
                     continue;
                 }
 
@@ -317,6 +323,26 @@ public class DefaultWSDL2JavaPlugin
         {
             migrateTestSource();
         }
+    }
+
+    /**
+     * Find a file with a given name among a set of files.
+     * 
+     * @param fileSet A set of files
+     * @param fileName The name of a file
+     * @return The file if it is found, otherwise <code>null</code>
+     */
+    private File getFile(Set /*<File>*/ fileSet, String fileName)
+    {
+        for( Iterator iterator = fileSet.iterator(); iterator.hasNext(); )
+        {
+            File file = (File) iterator.next();
+            if( file.getName().equals( fileName ) )
+            {
+                return file;
+            }
+        }
+        return null;
     }
 
     /**
