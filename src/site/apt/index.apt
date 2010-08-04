@@ -18,9 +18,11 @@ Axis Tools Plugin
 
 * Goals Overview
 
-  * {{{wsdl2java-mojo.html}wsdl2java}}
+  * {{{admin-mojo.html}admin}}
 
   * {{{java2wsdl-mojo.html}java2wsdl}}
+
+  * {{{wsdl2java-mojo.html}wsdl2java}}
 
   []
 
