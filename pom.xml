@@ -178,8 +178,9 @@
         <version>2.1</version>
         <configuration>
           <columnNames>Key,Summary,Status,Resolution,Assignee,Type,Version,Fix Version</columnNames>
-          <sortColumnNames>Fix Version</sortColumnNames>
+          <sortColumnNames>Key</sortColumnNames>
           <generateJiraAnnouncement>true</generateJiraAnnouncement>
+          <onlyCurrentVersion>true</onlyCurrentVersion>
           <urlDownload>${project.url}</urlDownload>
           <toAddresses>
             <toAddress>dev@mojo.codehaus.org</toAddress>
@@ -187,6 +188,13 @@
             <toAddress>users@maven.apache.org</toAddress>
           </toAddresses>
         </configuration>
+        <reportSets>
+          <reportSet>
+            <reports>
+              <report>jira-report</report>
+            </reports>
+          </reportSet>
+        </reportSets>
       </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
