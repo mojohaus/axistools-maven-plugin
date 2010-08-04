@@ -27,6 +27,7 @@ import org.codehaus.plexus.compiler.util.scan.StaleSourceScanner;
 import org.codehaus.plexus.compiler.util.scan.mapping.SuffixMapping;
 import org.codehaus.plexus.util.FileUtils;
 import org.codehaus.plexus.util.IOUtil;
+import org.codehaus.plexus.util.PathTool;
 import org.codehaus.plexus.util.StringUtils;
 
 import java.io.File;
@@ -534,7 +535,7 @@ public class DefaultWSDL2JavaPlugin
 
             try
             {
-                FileUtils.copyFileToDirectory( source, testSourceDirectory );
+                FileUtils.copyFileToDirectory( source, getDestinationDirectory( source ) );
                 FileUtils.fileDelete( source.getAbsolutePath() );
             }
             catch ( IOException ioe )
@@ -544,6 +545,27 @@ public class DefaultWSDL2JavaPlugin
         }
 
         project.addTestCompileSourceRoot( testSourceDirectory.getPath() );
+    }
+
+    /**
+     * Try to find out which directory the given generated test source file
+     * should be copied to. Calculate this based on the file's relative path to
+     * the output directory. If there is no package for the file, the
+     * packageSpace configuration is consulted.
+     *
+     * @param source A generated test source file
+     * @return The directory to which the generated test source file should be copied
+     */
+    private File getDestinationDirectory( File source )
+    {
+        String relativeFilePath = PathTool.getRelativeFilePath( outputDirectory.getAbsolutePath(),
+                                                                source.getAbsolutePath() );
+        String relativePath = FileUtils.getPath( relativeFilePath );
+        if( StringUtils.isEmpty( relativePath ) && packageSpace != null )
+        {
+            relativePath = StringUtils.replace( packageSpace, '.', File.separatorChar );
+        }
+        return new File( testSourceDirectory, relativePath );
     }
 
     /**
