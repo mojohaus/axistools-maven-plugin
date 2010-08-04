@@ -64,6 +64,8 @@ public class Java2WSDLMojo
     private String filename;
 
     /**
+     * The class-of-portType.
+     *
      * @parameter expression="${classOfPortType}"
      */
     private String classOfPortType;
@@ -100,6 +102,8 @@ public class Java2WSDLMojo
     private String bindingName;
 
     /**
+     * Service element name (defaults to servicePortName value + "Service").
+     *
      * @parameter expression="${serviceElementName}"
      */
     private String serviceElementName;
@@ -118,6 +122,9 @@ public class Java2WSDLMojo
     private String namespace;
 
     /**
+     * Package=namespace, name value pair.
+     * The plugin currently only supports one name value pair.
+     *
      * @parameter expression="${packageToNamespace}"
      */
     private String packageToNamespace;

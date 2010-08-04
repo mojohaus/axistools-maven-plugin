@@ -184,6 +184,9 @@ public class WSDL2JavaMojo
     private boolean noWrapped;
 
     /**
+     * Prefer generating JavaBean classes like "ArrayOfString" for certain
+     * schema array patterns.
+     *
      * @parameter default-value="true"
      * NJS 6 July 2006
      */
@@ -306,6 +309,8 @@ public class WSDL2JavaMojo
     private File outputDirectory;
 
     /**
+     * Directory used when evaluating whether files are up to date or stale.
+     *
      * @parameter default-value="${project.build.directory}"
      * @required
      */
