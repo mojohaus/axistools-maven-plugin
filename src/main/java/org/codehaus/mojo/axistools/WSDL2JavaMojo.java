@@ -373,6 +373,7 @@ public class WSDL2JavaMojo
         plugin.setSkeletonDeploy( skeletonDeploy );
         plugin.setSourceDependencies( sourceDependencies );
         plugin.setSourceDependencyDirectory( sourceDependencyDirectory );
+        plugin.setStaleMillis( staleMillis );
         plugin.setSubPackageByFileName( subPackageByFileName );
         plugin.setTestCases( testCases );
         plugin.setTestSourceDirectory( testSourceDirectory );
