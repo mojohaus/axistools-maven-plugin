@@ -52,12 +52,20 @@ public class Java2WSDLMojo
 
     /**
      * Directory for generated content.
+     *
+     * Corresponds to the <code>-o, --output</code> option in the Java2WSDL command line tool,
+     * together with the {@linkplain #filename} parameter.
+     *
      * @parameter default-value="${project.build.directory}/generated-sources/axistools/java2wsdl"
      */
     private File outputDirectory;
 
     /**
      * Indicates the name of the output WSDL file.
+     *
+     * Corresponds to the <code>-o, --output</code> option in the Java2WSDL command line tool,
+     * together with the {@linkplain #outputDirectory} parameter.
+     *
      * @parameter expression="${fileName}"
      * @required
      */
@@ -75,6 +83,9 @@ public class Java2WSDLMojo
      * The output wsdl file will contain everything from the input wsdl file plus the new constructs. 
      * If a new construct is already present in the input wsdl file, it is not added. 
      * This option is useful for constructing a wsdl file with multiple ports, bindings, or portTypes.
+     *
+     * Corresponds to the <code>-I, --input</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${input}"
      */
     private String input;
@@ -84,12 +95,18 @@ public class Java2WSDLMojo
      * The name after the last slash or backslash is the name of the service port 
      * (unless overridden by the servicePortName option). 
      * The service port address location attribute is assigned the specified value.
+     *
+     * Corresponds to the <code>-l, --location</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${location}"
      */
     private String location;
 
     /**
      * Indicates the name to use for the portType element. If not specified, the {@linkplain #classOfPortType} name is used.
+     *
+     * Corresponds to the <code>-P, --portTypeName</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${portTypeName}"
      */
     private String portTypeName;
@@ -97,12 +114,17 @@ public class Java2WSDLMojo
     /**
      * Indicates the name to use for the binding element. 
      * If not specified, the value of the {@linkplain #servicePortName} + "SoapBinding" is used.
+     *
+     * Corresponds to the <code>-b, --bindingName</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${bindingName}"
      */
     private String bindingName;
 
     /**
      * Service element name (defaults to servicePortName value + "Service").
+     *
+     * Corresponds to the <code>-S, --serviceElementName</code> option in the Java2WSDL command line tool.
      *
      * @parameter expression="${serviceElementName}"
      */
@@ -111,12 +133,18 @@ public class Java2WSDLMojo
     /**
      * Indicates the name of the service port. 
      * If not specified, the service port name is derived from the location value. 
+     *
+     * Corresponds to the <code>-s, --servicePortName</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${servicePortName}"
      */
     private String servicePortName;
 
     /**
      * Indicates the name of the target namespace of the WSDL.
+     *
+     * Corresponds to the <code>-n, --namespace</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${namespace}"
      */
     private String namespace;
@@ -125,18 +153,26 @@ public class Java2WSDLMojo
      * Package=namespace, name value pair.
      * The plugin currently only supports one name value pair.
      *
+     * Corresponds to the <code>-p, --PkgtoNS</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${packageToNamespace}"
      */
     private String packageToNamespace;
 
     /**
      * Methods to export.
+     *
+     * Corresponds to the <code>-m, --methods</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${methods}"
      */
     private ArrayList methods;
 
     /**
      * Look for allowed methods in inherited class.
+     *
+     * Corresponds to the <code>-a, --all</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="false"
      */
     private boolean all;
@@ -148,18 +184,27 @@ public class Java2WSDLMojo
      *   <li>Interface --- Generates a WSDL containing the interface constructs (no service element).
      *   <li>Implementation -- Generates a WSDL containing the implementation. The interface WSDL is imported via the {@linkplain #locationImport} option.
      * </ul>
+     *
+     * Corresponds to the <code>-w, --outputWsdlMode</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${outputWSDLMode}"
      */
     private String outputWSDLMode;
 
     /**
      * Used to indicate the location of the interface WSDL when generating an implementation WSDL.
+     *
+     * Corresponds to the <code>-L, --locationImport</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${locationImport}"
      */
     private String locationImport;
 
     /**
      * Namespace of the implementation WSDL.
+     *
+     * Corresponds to the <code>-N, --namespaceImpl</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${namespaceImpl}"
      */
     private String namespaceImpl;
@@ -168,6 +213,9 @@ public class Java2WSDLMojo
      * Use this option to indicate the name of the output implementation WSDL file. 
      * If specified, Java2WSDL will produce interface and implementation WSDL files. 
      * If this option is used, the {@linkplain #outputWSDLMode} option is ignored.
+     *
+     * Corresponds to the <code>-O, --outputImpl</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${outputImpl}"
      */
     private String outputImpl;
@@ -175,24 +223,36 @@ public class Java2WSDLMojo
     /**
      * Sometimes extra information is available in the implementation class file. 
      * Use this option to specify the implementation class.
+     *
+     * Corresponds to the <code>-i, --implClass</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${implClass}"
      */
     private String implClass;
 
     /**
      * List of methods not to export.
+     *
+     * Corresponds to the <code>-x, --exclude</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${exclude}"
      */
     private ArrayList excludes;
 
     /**
      * List of classes which stop the Java2WSDL inheritance search.
+     *
+     * Corresponds to the <code>-c, --stopClasses</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${stopClasses}"
      */
     private ArrayList stopClasses;
 
     /**
      * Choose the default type mapping registry to use. Either 1.1 or 1.2.
+     *
+     * Corresponds to the <code>-T, --typeMappingVersion</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${typeMappingVersion}"
      */
     private String typeMappingVersion;
@@ -203,6 +263,9 @@ public class Java2WSDLMojo
      * OPERATION forces soapAction to the name of the operation. 
      * DEFAULT causes the soapAction to be set according to the operation's meta data (usually ""). 
      * NONE forces the soapAction to "". The default is DEFAULT.
+     *
+     * Corresponds to the <code>-A, --soapAction</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${soapAction}"
      */
     private String soapAction;
@@ -213,6 +276,9 @@ public class Java2WSDLMojo
      * If DOCUMENT is specified, a document wsdl is generated. 
      * If WRAPPED is specified, a document/literal wsdl is generated using the wrapped approach. 
      * Wrapped style forces the use attribute to be literal.
+     *
+     * Corresponds to the <code>-y, --style</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${style}"
      */
     private String style;
@@ -221,6 +287,9 @@ public class Java2WSDLMojo
      * The use of the WSDL document: LITERAL or ENCODED. 
      * If LITERAL is specified, the XML Schema defines the representation of the XML for the request. 
      * If ENCODED is specified, SOAP encoding is specified in the generated WSDL.
+     *
+     * Corresponds to the <code>-u, --use</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${use}"
      */
     private String use;
@@ -228,12 +297,18 @@ public class Java2WSDLMojo
     /**
      * Specify a list of class names which should be included in the types section of the WSDL document. 
      * This is useful in the case where your service interface references a base class and you would like your WSDL to contain XML Schema type definitions for these other classes. 
+     *
+     * Corresponds to the <code>-e, --extraClasses</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${extraClasses}"
      */
     private ArrayList extraClasses;
 
     /**
      * A file or URL to an XML Schema that should be physically imported into the generated WSDL.
+     *
+     * Corresponds to the <code>-C, --importSchema</code> option in the Java2WSDL command line tool.
+     *
      * @parameter expression="${importSchema}"
      */
     private String importSchema;
