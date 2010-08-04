@@ -3,13 +3,13 @@
  ----------------
  Jesse McConnell
  ----------------
- 12 November 2005
+ 2010-08-04
  ----------------
 
 
-Axis Tools Plugin
+Axis Tools Maven Plugin
 
- This plugin supports the wsdl2java and java2wsdl tools from the {{{http://ws.apache.org/axis}Apache Axis project.}}
+  This plugin supports the WSDL2Java and Java2WSDL tools from the {{{http://ws.apache.org/axis}Apache Axis project}}.
 
 
 * Usage
@@ -29,6 +29,6 @@ Axis Tools Plugin
 
 * Examples
 
-  * {{{examples/simple.html}Simple}}.
+  * {{{examples/simple.html}Simple Configuration}}.
 
   []
