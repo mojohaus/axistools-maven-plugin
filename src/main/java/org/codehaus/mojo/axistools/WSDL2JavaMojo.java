@@ -339,7 +339,7 @@ public class WSDL2JavaMojo
     private ArtifactRepository localRepository;
 
     /**
-     * @parameter expression="${component.org.apache.maven.artifact.factory.ArtifactFactory}"
+     * @component role="org.apache.maven.artifact.factory.ArtifactFactory"
      * @required
      * @readonly
      */
