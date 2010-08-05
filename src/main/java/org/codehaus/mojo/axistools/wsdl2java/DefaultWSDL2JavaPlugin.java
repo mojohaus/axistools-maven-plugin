@@ -279,6 +279,15 @@ public class DefaultWSDL2JavaPlugin
         {
             getLog().info( "Nothing to generate. All WSDL files are up to date." );
         }
+        else if( wsdlFiles == null ) 
+        {
+            for ( Iterator i = wsdlSet.iterator(); i.hasNext(); )
+            {
+                File wsdl = (File) i.next();
+
+                processWsdl( wsdl );
+            }
+        }
         else
         {
             // MAXISTOOLS-47: It is important to search this way to be able to
@@ -297,32 +306,38 @@ public class DefaultWSDL2JavaPlugin
                     continue;
                 }
 
-                getLog().info( "Processing wsdl: " + wsdl.toString() );
-
-                if ( !useEmitter )
-                {
-                    WSDL2JavaWrapper wsdlWrapper = new WSDL2JavaWrapper();
-                    wsdlWrapper.execute( generateWSDLArgumentList( wsdl.getAbsoluteFile() ) );
-                }
-                else
-                {
-                    runEmitter( wsdl );
-                }
-
-                try
-                {
-                    FileUtils.copyFileToDirectory( wsdl, timestampDirectory );
-                }
-                catch ( IOException e )
-                {
-                    throw new AxisPluginException( "Error while copying the WSDL to timestamp directory.", e );
-                }
+                processWsdl( wsdl );
             }
         }
 
         if ( runTestCasesAsUnitTests )
         {
             migrateTestSource();
+        }
+    }
+
+    private void processWsdl( File wsdl )
+        throws AxisPluginException
+    {
+        getLog().info( "Processing wsdl: " + wsdl.toString() );
+
+        if ( !useEmitter )
+        {
+            WSDL2JavaWrapper wsdlWrapper = new WSDL2JavaWrapper();
+            wsdlWrapper.execute( generateWSDLArgumentList( wsdl.getAbsoluteFile() ) );
+        }
+        else
+        {
+            runEmitter( wsdl );
+        }
+
+        try
+        {
+            FileUtils.copyFileToDirectory( wsdl, timestampDirectory );
+        }
+        catch ( IOException e )
+        {
+            throw new AxisPluginException( "Error while copying the WSDL to timestamp directory.", e );
         }
     }
 
