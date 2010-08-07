@@ -53,6 +53,7 @@ public class WSDL2JavaMojo
 
     /**
      * List of WSDL files from {@link #sourceDirectory} to process.
+     * The files will be processed in the order they appear in your configuration.
      *
      * @parameter expression=""
      */
