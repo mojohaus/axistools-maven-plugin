@@ -133,7 +133,8 @@ public class DefaultWSDL2JavaPlugin
     private boolean testCases;
 
     /**
-     * copy the generated test cases to a generated-sources test directory to be compiled and run as normal surefire unit tests
+     * Copy the generated test cases to a generated-sources test directory to
+     * be compiled and run as normal Surefire unit tests.
      *
      * @parameter expression="false"
      */
@@ -282,7 +283,7 @@ public class DefaultWSDL2JavaPlugin
         {
             getLog().info( "Nothing to generate. All WSDL files are up to date." );
         }
-        else if( wsdlFiles == null ) 
+        else if ( wsdlFiles == null ) 
         {
             for ( Iterator i = wsdlSet.iterator(); i.hasNext(); )
             {
@@ -351,12 +352,12 @@ public class DefaultWSDL2JavaPlugin
      * @param fileName The name of a file
      * @return The file if it is found, otherwise <code>null</code>
      */
-    private File getFile(Set /*<File>*/ fileSet, String fileName)
+    private File getFile( Set /*<File>*/ fileSet, String fileName )
     {
-        for( Iterator iterator = fileSet.iterator(); iterator.hasNext(); )
+        for ( Iterator iterator = fileSet.iterator(); iterator.hasNext(); )
         {
             File file = (File) iterator.next();
-            if( file.getName().equals( fileName ) )
+            if ( file.getName().equals( fileName ) )
             {
                 return file;
             }
@@ -386,8 +387,8 @@ public class DefaultWSDL2JavaPlugin
         }
         catch ( Exception e )
         {
-            throw new AxisPluginException( "unable to open connection for download of WSDL file from URL " + urlStr +
-                ". Reason: " + e.getClass().getName() + ": " + e.getMessage(), e );
+            throw new AxisPluginException( "unable to open connection for download of WSDL file from URL " + urlStr
+                + ". Reason: " + e.getClass().getName() + ": " + e.getMessage(), e );
         }
 
         File localWsdl = new File( urlDownloadDirectory, createSafeFileName( urlStr ) );
@@ -422,8 +423,8 @@ public class DefaultWSDL2JavaPlugin
         }
         catch ( Exception e )
         {
-            throw new AxisPluginException( "unable to download WSDL file from " + urlStr + " to " +
-                localWsdl.getAbsolutePath() + ". Reason: " + e.getClass().getName() + ": " + e.getMessage(), e );
+            throw new AxisPluginException( "unable to download WSDL file from " + urlStr + " to "
+                + localWsdl.getAbsolutePath() + ". Reason: " + e.getClass().getName() + ": " + e.getMessage(), e );
         }
         finally
         {
@@ -445,7 +446,7 @@ public class DefaultWSDL2JavaPlugin
      * <li>if the referenced WSDL file cannot be found or retrieved from the referenced artifact
      * </ul>
      *
-     * @param sourceDependencyString the source dependency (format should be <code>groupId:artifactId:version:file</code>)
+     * @param sourceDependencyString the source dependency (in the format <code>groupId:artifactId:version:file</code>)
      */
     private void extractWSDLFromSourceDependency( String sourceDependencyString )
         throws AxisPluginException
@@ -454,8 +455,8 @@ public class DefaultWSDL2JavaPlugin
 
         if ( strtok.countTokens() != 4 )
         {
-            throw new AxisPluginException( "invalid sourceDependency: " + sourceDependencyString +
-                ". Expected format: groupId:artifactId:version:file" );
+            throw new AxisPluginException( "invalid sourceDependency: " + sourceDependencyString
+                + ". Expected format: groupId:artifactId:version:file" );
         }
 
         String groupId = strtok.nextToken();
@@ -469,23 +470,23 @@ public class DefaultWSDL2JavaPlugin
         {
             Artifact artifact = artifactFactory.createArtifact( groupId, artifactId, version, null, "jar" );
 
-            URL url = new URL( "jar:file:" + localRepository.getBasedir() + File.separator +
-                localRepository.pathOf( artifact ) + "!" + wsdlFileString );
+            URL url = new URL( "jar:file:" + localRepository.getBasedir() + File.separator
+                + localRepository.pathOf( artifact ) + "!" + wsdlFileString );
 
             jarConnection = (JarURLConnection) url.openConnection();
 
             entry = jarConnection.getJarEntry();
             if ( entry == null )
             {
-                throw new AxisPluginException( "unable to find " + wsdlFileString +
-                    " in artifact of sourceDependency " + sourceDependencyString + "." );
+                throw new AxisPluginException( "unable to find " + wsdlFileString
+                    + " in artifact of sourceDependency " + sourceDependencyString + "." );
             }
         }
         catch ( Exception e )
         {
-            throw new AxisPluginException( "unable to open JAR URL connection for extraction of " +
-                "WSDL file from artifact of sourceDependency " + sourceDependencyString + ". Reason: " +
-                e.getClass().getName() + ": " + e.getMessage(), e );
+            throw new AxisPluginException( "unable to open JAR URL connection for extraction of "
+                + "WSDL file from artifact of sourceDependency " + sourceDependencyString + ". Reason: "
+                + e.getClass().getName() + ": " + e.getMessage(), e );
         }
 
         File localWsdl = new File( sourceDependencyDirectory, createSafeFileName( sourceDependencyString ) );
@@ -494,8 +495,8 @@ public class DefaultWSDL2JavaPlugin
 // that of the local copy
         if ( localWsdl.exists() && entry.getTime() == localWsdl.lastModified() )
         {
-            getLog().debug( "local copy of WSDL file from artifact of sourceDependency " + sourceDependencyString +
-                " is up to date." );
+            getLog().debug( "local copy of WSDL file from artifact of sourceDependency " + sourceDependencyString
+                + " is up to date." );
             return;
         }
 
@@ -517,13 +518,13 @@ public class DefaultWSDL2JavaPlugin
             IOUtil.copy( jarWsdlInput, localWsdlOutput );
             localWsdlOutput.flush();
 
-            getLog().info( "extracted WSDL from sourceDependency " + sourceDependencyString + " (" +
-                localWsdl.length() + " Bytes)." );
+            getLog().info( "extracted WSDL from sourceDependency " + sourceDependencyString + " ("
+                + localWsdl.length() + " Bytes)." );
         }
         catch ( Exception e )
         {
-            throw new AxisPluginException( "unable to retrieve " + wsdlFileString +
-                " from artifact of sourceDependency " + sourceDependencyString + ".", e );
+            throw new AxisPluginException( "unable to retrieve " + wsdlFileString
+                + " from artifact of sourceDependency " + sourceDependencyString + ".", e );
         }
         finally
         {
@@ -579,7 +580,7 @@ public class DefaultWSDL2JavaPlugin
         String relativeFilePath = PathTool.getRelativeFilePath( outputDirectory.getAbsolutePath(),
                                                                 source.getAbsolutePath() );
         String relativePath = FileUtils.getPath( relativeFilePath );
-        if( StringUtils.isEmpty( relativePath ) && packageSpace != null )
+        if ( StringUtils.isEmpty( relativePath ) && packageSpace != null )
         {
             relativePath = StringUtils.replace( packageSpace, '.', File.separatorChar );
         }
@@ -702,7 +703,8 @@ public class DefaultWSDL2JavaPlugin
 
         if ( nsIncludes != null )
         {
-           for ( Iterator i = nsIncludes.iterator(); i.hasNext(); ) {
+           for ( Iterator i = nsIncludes.iterator(); i.hasNext(); )
+           {
             argsList.add( "-i" );
             argsList.add( i.next() );
            }
@@ -710,7 +712,8 @@ public class DefaultWSDL2JavaPlugin
 
         if ( nsExcludes != null )
         {
-           for ( Iterator i = nsExcludes.iterator(); i.hasNext(); ) {
+           for ( Iterator i = nsExcludes.iterator(); i.hasNext(); )
+           {
             argsList.add( "-x" );
             argsList.add( i.next() );
            }

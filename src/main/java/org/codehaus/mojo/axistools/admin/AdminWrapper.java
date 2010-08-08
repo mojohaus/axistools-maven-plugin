@@ -103,7 +103,8 @@ public class AdminWrapper
         }
         catch ( Exception e )
         {
-            throw new AxisPluginException( "Axis Admin had a problem, it returned a failure status: " + e.getMessage() );
+            throw new AxisPluginException( "Axis Admin had a problem, it returned a failure status: "
+                + e.getMessage() );
         }
     }
 }

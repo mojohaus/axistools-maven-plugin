@@ -106,7 +106,8 @@ public class Java2WSDLMojo
     private String location;
 
     /**
-     * Indicates the name to use for the portType element. If not specified, the {@linkplain #classOfPortType} name is used.
+     * Indicates the name to use for the portType element. If not specified, the
+     * {@linkplain #classOfPortType} name is used.
      *
      * Corresponds to the <code>-P, --portTypeName</code> option in the Java2WSDL command line tool.
      *
@@ -183,9 +184,13 @@ public class Java2WSDLMojo
     /**
      * Indicates the kind of WSDL to generate. Accepted values are:
      * <ul>
-     *   <li>All --- (default) Generates wsdl containing both interface and implementation WSDL constructs.
-     *   <li>Interface --- Generates a WSDL containing the interface constructs (no service element).
-     *   <li>Implementation -- Generates a WSDL containing the implementation. The interface WSDL is imported via the {@linkplain #locationImport} option.
+     *   <li>All --- (default) Generates wsdl containing both interface and
+     *       implementation WSDL constructs.</li>
+     *   <li>Interface --- Generates a WSDL containing the interface constructs
+     *       (no service element).</li>
+     *   <li>Implementation -- Generates a WSDL containing the implementation.
+     *       The interface WSDL is imported via the {@linkplain #locationImport}
+     *       option.</li>
      * </ul>
      *
      * Corresponds to the <code>-w, --outputWsdlMode</code> option in the Java2WSDL command line tool.
@@ -298,8 +303,11 @@ public class Java2WSDLMojo
     private String use;
 
     /**
-     * Specify a list of class names which should be included in the types section of the WSDL document. 
-     * This is useful in the case where your service interface references a base class and you would like your WSDL to contain XML Schema type definitions for these other classes. 
+     * Specify a list of class names which should be included in the types
+     * section of the WSDL document.
+     * This is useful in the case where your service interface references a base
+     * class and you would like your WSDL to contain XML Schema type definitions
+     * for these other classes. 
      *
      * Corresponds to the <code>-e, --extraClasses</code> option in the Java2WSDL command line tool.
      *

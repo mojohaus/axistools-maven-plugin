@@ -285,8 +285,8 @@ public class DefaultJava2WSDLPlugin
 
         if ( outputWSDLMode != null )
         {
-            if ( "All".equalsIgnoreCase( outputWSDLMode ) || "Interface".equalsIgnoreCase( outputWSDLMode ) ||
-                "Implementation".equalsIgnoreCase( outputWSDLMode ) )
+            if ( "All".equalsIgnoreCase( outputWSDLMode ) || "Interface".equalsIgnoreCase( outputWSDLMode )
+                || "Implementation".equalsIgnoreCase( outputWSDLMode ) )
             {
                 argsList.add( "-w" );
                 argsList.add( outputWSDLMode );
@@ -356,8 +356,8 @@ public class DefaultJava2WSDLPlugin
 
         if ( soapAction != null )
         {
-            if ( "DEFAULT".equalsIgnoreCase( soapAction ) || "OPERATION".equalsIgnoreCase( soapAction ) ||
-                "NONE".equalsIgnoreCase( soapAction ) )
+            if ( "DEFAULT".equalsIgnoreCase( soapAction ) || "OPERATION".equalsIgnoreCase( soapAction )
+                || "NONE".equalsIgnoreCase( soapAction ) )
             {
                 argsList.add( "-A" );
                 argsList.add( soapAction.toUpperCase() );
@@ -366,8 +366,8 @@ public class DefaultJava2WSDLPlugin
 
         if ( style != null )
         {
-            if ( "RPC".equalsIgnoreCase( style ) || "DOCUMENT".equalsIgnoreCase( style ) ||
-                "WRAPPED".equalsIgnoreCase( style ) )
+            if ( "RPC".equalsIgnoreCase( style ) || "DOCUMENT".equalsIgnoreCase( style )
+                || "WRAPPED".equalsIgnoreCase( style ) )
             {
                 argsList.add( "-y" );
                 argsList.add( style.toUpperCase() );
@@ -559,7 +559,8 @@ public class DefaultJava2WSDLPlugin
         this.projectHelper = projectHelper;
     }
     
-    public void setClasspath( String classpath ) {
-		this.classpath = classpath;
-	}
+    public void setClasspath( String classpath )
+    {
+        this.classpath = classpath;
+    }
 }

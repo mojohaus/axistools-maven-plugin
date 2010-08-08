@@ -156,11 +156,14 @@ public class WSDL2JavaMojo
      *   <li>bindings
      *   <li>services
      * </ol>
-     * For example, if a WSDL file only contained types, then all the listed types would be generated.
-     * But if a WSDL file contained types and a portType,
-     * then that portType will be generated and only those types that are referenced by that portType.
-     * Note that the anchor is searched for in the WSDL file appearing on the command line, not in imported WSDL files.
-     * This allows one WSDL file to import constructs defined in another WSDL file without the nuisance of having all the imported WSDL file's constructs generated.
+     * For example, if a WSDL file only contained types, then all the listed
+     * types would be generated. But if a WSDL file contained types and a
+     * portType, then that portType will be generated and only those types that
+     * are referenced by that portType. Note that the anchor is searched for in
+     * the WSDL file appearing on the command line, not in imported WSDL files.
+     * This allows one WSDL file to import constructs defined in another WSDL
+     * file without the nuisance of having all the imported WSDL file's
+     * constructs generated.
      *
      * Corresponds to the <code>-a, --all</code> option in the WSDL2Java command line tool.
      *

@@ -90,7 +90,7 @@ public class DefaultAdminPlugin
         try
         {
 
-            AdminWrapper wrapper = new AdminWrapper( getLog());
+            AdminWrapper wrapper = new AdminWrapper( getLog() );
             wrapper.execute( (String[]) argsList.toArray( new String[]{} ) );
         }
         catch ( Throwable t )
