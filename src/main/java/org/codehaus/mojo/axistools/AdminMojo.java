@@ -40,23 +40,23 @@ public class AdminMojo
     extends AbstractMojo
 {
     /**
-     * Where the server-config.wsdd or client-config.wsdd should go
+     * Where the server-config.wsdd or client-config.wsdd should go.
      *
-     * @parameter expression="${basedir}/src/main/webapp/WEB-INF"
+     * @parameter default-value="${basedir}/src/main/webapp/WEB-INF"
      */
     private File configOutputDirectory;
 
     /**
-     * Generate a server or client deployment file
+     * Generate a server or client deployment file.
      *
-     * @parameter expression="true"
+     * @parameter default-value="true"
      * @required
      */
 
     private boolean isServerConfig;
 
     /**
-     * Files used to create deployment file
+     * Files used to create deployment file.
      *
      * @parameter expression="${inputFile}"
      * @required
@@ -65,7 +65,7 @@ public class AdminMojo
     private ArrayList inputFiles;
 
     /**
-     * @parameter expression="${project}"
+     * @parameter default-value="${project}"
      * @required
      * @readonly
      */
