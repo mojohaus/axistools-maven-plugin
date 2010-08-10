@@ -25,11 +25,11 @@
   <artifactId>axistools-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
   <name>Axis Tools Maven Plugin</name>
-  <version>1.4</version>
+  <version>1.5-SNAPSHOT</version>
   <scm>
-    <connection>scm:svn:http://svn.codehaus.org/mojo/tags/axistools-maven-plugin-1.4</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/axistools-maven-plugin-1.4</developerConnection>
-    <url>http://fisheye.codehaus.org/browse/mojo/tags/axistools-maven-plugin-1.4</url>
+    <connection>scm:svn:http://svn.codehaus.org/mojo/trunk/mojo/axistools-maven-plugin/</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/trunk/mojo/axistools-maven-plugin/</developerConnection>
+    <url>http://fisheye.codehaus.org/browse/mojo/trunk/mojo/axistools-maven-plugin</url>
   </scm>
   <description>
     This plugin supports the wsdl2java and java2wsdl tools from the Apache Axis (1) project.
