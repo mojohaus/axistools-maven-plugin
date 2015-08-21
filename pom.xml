@@ -1,6 +1,6 @@
   <!--
     /*
-    * Copyright 2005-2008 The Codehaus. 
+    * Copyright 2005-2008 The Codehaus.
     *
     * Licensed under the Apache License, Version 2.0 (the "License");
     * you may not use this file except in compliance with the License.
@@ -26,10 +26,11 @@
   <packaging>maven-plugin</packaging>
   <name>Axis Tools Maven Plugin</name>
   <version>1.5-SNAPSHOT</version>
+  <url>http://www.mojohaus.org/axistools-maven-plugin/</url>
   <scm>
-    <connection>scm:svn:http://svn.codehaus.org/mojo/trunk/mojo/axistools-maven-plugin/</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/trunk/mojo/axistools-maven-plugin/</developerConnection>
-    <url>http://fisheye.codehaus.org/browse/mojo/trunk/mojo/axistools-maven-plugin</url>
+    <connection>scm:git:https://github.com/mojohaus/axistools-maven-plugin.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/mojohaus/axistools-maven-plugin.git</developerConnection>
+    <url>https://github.com/mojohaus/axistools-maven-plugin/</url>
   </scm>
   <description>
     This plugin supports the wsdl2java and java2wsdl tools from the Apache Axis (1) project.
@@ -45,8 +46,8 @@
     <maven>${mavenVersion}</maven>
   </prerequisites>
   <issueManagement>
-    <system>JIRA</system>
-    <url>http://jira.codehaus.org/browse/MAXISTOOLS</url>
+    <system>GitHub</system>
+    <url>https://github.com/mojohaus/axistools-maven-plugin/issues</url>
   </issueManagement>
   <inceptionYear>2005</inceptionYear>
   <dependencies>
@@ -118,9 +119,9 @@
                 <goal>package</goal>
               </goals>
               <settingsFile>src/it/settings.xml</settingsFile>
-               
+
               <cloneProjectsTo>${project.build.directory}/it</cloneProjectsTo>
-              
+
             </configuration>
             <executions>
               <execution>
@@ -131,7 +132,7 @@
                 </goals>
               </execution>
             </executions>
-          </plugin>  
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -172,30 +173,6 @@
   </ciManagement>
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-changes-plugin</artifactId>
-        <version>2.1</version>
-        <configuration>
-          <columnNames>Key,Summary,Status,Resolution,Assignee,Type,Version,Fix Version</columnNames>
-          <sortColumnNames>Key</sortColumnNames>
-          <generateJiraAnnouncement>true</generateJiraAnnouncement>
-          <onlyCurrentVersion>true</onlyCurrentVersion>
-          <urlDownload>${project.url}</urlDownload>
-          <toAddresses>
-            <toAddress>dev@mojo.codehaus.org</toAddress>
-            <toAddress>user@mojo.codehaus.org</toAddress>
-            <toAddress>users@maven.apache.org</toAddress>
-          </toAddresses>
-        </configuration>
-        <reportSets>
-          <reportSet>
-            <reports>
-              <report>jira-report</report>
-            </reports>
-          </reportSet>
-        </reportSets>
-      </plugin>
       <plugin>
         <!-- This version of the plugin requires Java 5 to run, so make sure you use that when generating the site -->
         <groupId>org.codehaus.mojo</groupId>
