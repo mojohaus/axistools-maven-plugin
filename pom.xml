@@ -19,7 +19,7 @@
   <parent>
     <artifactId>mojo-parent</artifactId>
     <groupId>org.codehaus.mojo</groupId>
-    <version>24</version>
+    <version>36</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
   <artifactId>axistools-maven-plugin</artifactId>
@@ -215,5 +215,6 @@
 
   <properties>
     <mavenVersion>2.0.6</mavenVersion>
+    <mojo.java.target>1.5</mojo.java.target>
   </properties>
 </project>
