@@ -1,0 +1,5 @@
+org.codehaus.mojo.axistools
+org.codehaus.mojo.axistools.admin
+org.codehaus.mojo.axistools.axis
+org.codehaus.mojo.axistools.java2wsdl
+org.codehaus.mojo.axistools.wsdl2java
